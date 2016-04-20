@@ -16,7 +16,7 @@
         {
             try
             {
-                bootstrapper.Run();
+                bootstrapper.Run(e.Args);
             }
             catch (Exception exception)
             {
@@ -26,14 +26,16 @@
 
         protected override void OnExit(ExitEventArgs e)
         {
-            CleanupAndExit(fail: false);
+            CleanupAndExit();
         }
 
         private void HandleError(Exception exception)
         {
+            bootstrapper.ReportError(exception);
+
             ReportError(exception);
 
-            CleanupAndExit(fail: true);
+            CleanupAndExit();
         }
 
         private static void ReportError(Exception exception)
@@ -41,14 +43,9 @@
             //TODO: Вызов модального диалогового окна или запись в журнал.
         }
 
-        private void CleanupAndExit(bool fail)
+        private void CleanupAndExit()
         {
             bootstrapper.Dispose();
-
-            if (fail)
-            {
-                Environment.FailFast("Application initialization failed.");
-            }
         }
     }
 }
