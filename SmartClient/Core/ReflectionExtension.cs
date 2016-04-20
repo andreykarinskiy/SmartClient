@@ -11,7 +11,7 @@
 
             if (descriptions.Length == 0)
             {
-                return null;
+                return member.Name;
             }
 
             return descriptions[0].Description;

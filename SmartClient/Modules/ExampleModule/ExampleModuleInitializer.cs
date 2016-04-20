@@ -2,31 +2,31 @@
 {
     using System;
     using System.ComponentModel;
+    using System.Globalization;
+    using System.Reflection;
 
     using Core;
+
+    using ExampleModule.Views;
 
     using Prism.Events;
     using Prism.Logging;
     using Prism.Modularity;
+    using Prism.Mvvm;
     using Prism.Regions;
 
-    [Description("Example")]
-    public class ExampleModuleInitializer : IModule
-    {
-        private readonly ILoggerFacade logger;
-        private readonly IRegionManager regionManager;
-        private readonly IEventAggregator eventAggregator;
+    using Module = Core.Module;
 
-        public ExampleModuleInitializer(ILoggerFacade logger, IRegionManager regionManager, IEventAggregator eventAggregator)
+    [Description("Example")]
+    public class ExampleModuleInitializer : Module
+    {
+        public ExampleModuleInitializer(ILoggerFacade logger, IRegionManager regionManager, IEventAggregator eventAggregator) : base(logger, regionManager, eventAggregator)
         {
-            this.logger = logger;
-            this.regionManager = regionManager;
-            this.eventAggregator = eventAggregator;
         }
 
-        public void Initialize()
+        protected override void Initialize()
         {
-            this.logger.Info($"Загружен модуль {this.Description()}.");
+            regionManager.RegisterViewWithRegion("Example", typeof(ExampleView));
         }
     }
 }
