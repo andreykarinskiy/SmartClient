@@ -1,18 +1,9 @@
 ﻿namespace ExampleModule
 {
-    using System;
     using System.ComponentModel;
-    using System.Globalization;
-    using System.Reflection;
-
-    using Core;
-
     using ExampleModule.Views;
-
     using Prism.Events;
     using Prism.Logging;
-    using Prism.Modularity;
-    using Prism.Mvvm;
     using Prism.Regions;
 
     using Module = Core.Module;

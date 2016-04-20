@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExampleModule.ViewModels
+﻿namespace ExampleModule.ViewModels
 {
     using Core;
-
-    using Prism.Mvvm;
 
     public class ExampleViewModel : ViewModel
     {
