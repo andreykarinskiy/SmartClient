@@ -4,6 +4,7 @@
     using ExampleModule.Views;
     using Prism.Events;
     using Prism.Logging;
+    using Prism.Modularity;
     using Prism.Regions;
 
     using Module = Core.Module;
